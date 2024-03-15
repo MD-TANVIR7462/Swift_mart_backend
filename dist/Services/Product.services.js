@@ -28,7 +28,7 @@ const deleteAProductIntoDB = (id) => __awaiter(void 0, void 0, void 0, function*
     return result;
 });
 const updateAProductIntoDB = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield ProductModel_1.ProductModel.findOneAndUpdate({ id }, { $set: data }, { new: true });
+    const result = yield ProductModel_1.ProductModel.findByIdAndUpdate({ _id: id }, { $set: data }, { new: true });
     return result;
 });
 exports.producServices = {
@@ -36,5 +36,5 @@ exports.producServices = {
     getAllProductIntoDB,
     getSignleProductIntoDB,
     deleteAProductIntoDB,
-    updateAProductIntoDB
+    updateAProductIntoDB,
 };

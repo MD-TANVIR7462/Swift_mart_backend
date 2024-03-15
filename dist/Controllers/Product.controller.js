@@ -25,6 +25,66 @@ const creatProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         next(error);
     }
 });
+const getAllProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield Product_services_1.producServices.getAllProductIntoDB();
+        res.status(200).json({
+            success: true,
+            message: "products retrive successfully",
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+const getSingleProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const result = yield Product_services_1.producServices.getSignleProductIntoDB(id);
+        res.status(200).json({
+            success: true,
+            message: "single product retrive successfully",
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+const deleteAProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const result = yield Product_services_1.producServices.deleteAProductIntoDB(id);
+        res.status(200).json({
+            success: true,
+            message: "product Deleted successfully",
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+const updateAProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const data = req.body;
+        const result = yield Product_services_1.producServices.updateAProductIntoDB(id, data);
+        res.status(200).json({
+            success: true,
+            message: "product Updated successfully",
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 exports.productControllers = {
-    creatProduct
+    creatProduct,
+    getAllProduct,
+    getSingleProduct,
+    deleteAProduct,
+    updateAProduct
 };
