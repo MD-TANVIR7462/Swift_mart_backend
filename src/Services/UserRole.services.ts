@@ -6,8 +6,8 @@ const createRoleIntoDB = async (userRole: TuserRole) => {
   return result;
 };
 
-const GetAllRoleIntoDB = async () => {
-  const result = await UserRoleModel.find();
+const GetAllRoleIntoDB = async (role:object) => {
+  const result = await UserRoleModel.find(role);
   return result;
 };
 

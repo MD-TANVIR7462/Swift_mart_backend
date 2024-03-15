@@ -26,21 +26,10 @@ const updateStudentintoDB = async (id: string, data: Partial<TStudent>) => {
   if (!existingStudent) {
     throw new Error("Student not found");
   }
-  const updatedName = { ...existingStudent.name };
-  if (data.name) {
-    for (const key in data.name) {
-      if (data.name.hasOwnProperty(key)) {
-        updatedName[key] = data.name[key];
-      }
-    }
-  }
-  const updateFields: Partial<TStudent> = {
-    name: updatedName,
-    ...data,
-  };
+
   const result = await studentModel.findByIdAndUpdate(
     id,
-    { $set: updateFields },
+    { $set: data },
     { new: true }
   );
 

@@ -15,8 +15,8 @@ const createRoleIntoDB = (userRole) => __awaiter(void 0, void 0, void 0, functio
     const result = yield UserRole_Model_1.UserRoleModel.create(userRole);
     return result;
 });
-const GetAllRoleIntoDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield UserRole_Model_1.UserRoleModel.find();
+const GetAllRoleIntoDB = (role) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield UserRole_Model_1.UserRoleModel.find(role);
     return result;
 });
 const GetSingleRoleIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
