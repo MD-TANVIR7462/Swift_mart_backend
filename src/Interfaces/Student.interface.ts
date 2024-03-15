@@ -1,0 +1,20 @@
+import { Schema, model, connect } from "mongoose";
+
+
+type StudentName= {
+   firstName: string;
+   middleName: string;
+   lastName: string;
+ }
+
+
+export type TStudent = {
+  name:StudentName;
+  gender: string;
+  email: string;
+  dateofBirth: string;
+  contactNumber: string;
+  fatherName: string;
+  motherName: string;
+  age: number;
+};
