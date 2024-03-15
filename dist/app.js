@@ -4,20 +4,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const Student_routes_1 = require("./routes/Student.routes");
 const app = (0, express_1.default)();
 //parsers
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
+app.use("/api/student", Student_routes_1.StudentRouter);
+//*Hellow Ricoz initial loading..........
 app.get("/", (req, res) => {
     res.json("Hello RicoZ Task ! ");
 });
-app.post("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "Successfully retrieved data ",
-    });
-});
-exports.default = app;
-//global error handler..
+//*global error handler..
 app.use((err, req, res, next) => {
     let message;
     let finalMessage;
@@ -42,3 +40,4 @@ app.use((err, req, res, next) => {
         stack: err.stack,
     });
 });
+exports.default = app;

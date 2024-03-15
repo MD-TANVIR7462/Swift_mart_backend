@@ -1,6 +1,3 @@
-import { Schema, model, connect } from "mongoose";
-
-
 type StudentName= {
    firstName: string;
    middleName: string;

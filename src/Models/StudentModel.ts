@@ -1,17 +1,17 @@
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 import { TStudent } from "../Interfaces/Student.interface";
 
 const studentSchema = new Schema<TStudent>({
   name: {
     firstName: {
-      type: "string",
+      type: String,
       required: true,
     },
     middleName: {
-      type: "string",
+      type: String,
     },
     lastName: {
-      type: "string",
+      type: String,
       required: true,
     },
   },
@@ -46,3 +46,4 @@ const studentSchema = new Schema<TStudent>({
 });
 
 
+export const studentModel = model<TStudent>('student', studentSchema);

@@ -1,22 +1,30 @@
 import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
+import { StudentRouter } from "./routes/Student.routes";
 const app = express();
 
 //parsers
 app.use(express.json());
+app.use(cors());
 
+app.use("/api/student",StudentRouter)
+
+
+
+
+
+
+
+
+
+
+//*Hellow Ricoz initial loading..........
 app.get("/", (req: Request, res: Response) => {
   res.json("Hello RicoZ Task ! ");
 });
-app.post("/", (req: Request, res: Response) => {
-  res.json({
-    success: true,
-    message: "Successfully retrieved data ",
-  });
-});
 
-export default app;
 
-//global error handler..
+//*global error handler..
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   let message: any;
   let finalMessage: any;
@@ -42,3 +50,6 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     stack: err.stack,
   });
 });
+
+
+export default app;
