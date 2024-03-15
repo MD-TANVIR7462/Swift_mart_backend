@@ -17,12 +17,16 @@ const GetSingleRoleIntoDB = async (id: string) => {
 };
 
 const deleteARoleIntoDB = async (id: string) => {
-  const result = await UserRoleModel.deleteOne(id);
+  const result = await UserRoleModel.deleteOne({ _id: id });
   return result;
 };
 
-const updateARoleIntoDB = async (id: string) => {
-  const result = await UserRoleModel.deleteOne(id);
+const updateARoleIntoDB = async (id: string, data: Partial<TuserRole>) => {
+  const result = await UserRoleModel.findByIdAndUpdate(
+    id,
+    { $set: data },
+    { new: true }
+  );
   return result;
 };
 

@@ -24,11 +24,11 @@ const GetSingleRoleIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* 
     return result;
 });
 const deleteARoleIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield UserRole_Model_1.UserRoleModel.deleteOne(id);
+    const result = yield UserRole_Model_1.UserRoleModel.deleteOne({ _id: id });
     return result;
 });
-const updateARoleIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield UserRole_Model_1.UserRoleModel.deleteOne(id);
+const updateARoleIntoDB = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield UserRole_Model_1.UserRoleModel.findByIdAndUpdate(id, { $set: data }, { new: true });
     return result;
 });
 exports.userRoleServices = {
