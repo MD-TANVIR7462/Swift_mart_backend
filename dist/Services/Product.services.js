@@ -15,6 +15,26 @@ const createProductIntoDB = (product) => __awaiter(void 0, void 0, void 0, funct
     const result = yield ProductModel_1.ProductModel.create(product);
     return result;
 });
+const getAllProductIntoDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield ProductModel_1.ProductModel.find();
+    return result;
+});
+const getSignleProductIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield ProductModel_1.ProductModel.find({ _id: id });
+    return result;
+});
+const deleteAProductIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield ProductModel_1.ProductModel.deleteOne({ _id: id });
+    return result;
+});
+const updateAProductIntoDB = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield ProductModel_1.ProductModel.findOneAndUpdate({ id }, { $set: data }, { new: true });
+    return result;
+});
 exports.producServices = {
-    createProductIntoDB
+    createProductIntoDB,
+    getAllProductIntoDB,
+    getSignleProductIntoDB,
+    deleteAProductIntoDB,
+    updateAProductIntoDB
 };
