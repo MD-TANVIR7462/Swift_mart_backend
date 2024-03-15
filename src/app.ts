@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { StudentRouter } from "./routes/Student.routes";
+import { ProductRouter } from "./routes/Product.routes";
 const app = express();
 
 //parsers
@@ -8,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/student",StudentRouter)
+app.use("/api/product",ProductRouter)
 
 
 
