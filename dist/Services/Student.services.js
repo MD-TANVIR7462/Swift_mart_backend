@@ -23,8 +23,31 @@ const getSingleStudentintoDB = (id) => __awaiter(void 0, void 0, void 0, functio
     const result = yield StudentModel_1.studentModel.findOne({ _id: id });
     return result;
 });
+const deleteStudentintoDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield StudentModel_1.studentModel.deleteOne({ _id: id });
+    return result;
+});
+const updateStudentintoDB = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    const existingStudent = yield StudentModel_1.studentModel.findById(id);
+    if (!existingStudent) {
+        throw new Error("Student not found");
+    }
+    const updatedName = Object.assign({}, existingStudent.name);
+    if (data.name) {
+        for (const key in data.name) {
+            if (data.name.hasOwnProperty(key)) {
+                updatedName[key] = data.name[key];
+            }
+        }
+    }
+    const updateFields = Object.assign({ name: updatedName }, data);
+    const result = yield StudentModel_1.studentModel.findByIdAndUpdate(id, { $set: updateFields }, { new: true });
+    return result;
+});
 exports.studenServices = {
     createStudentIntoDB,
     getAllStudentIntoDB,
-    getSingleStudentintoDB
+    getSingleStudentintoDB,
+    deleteStudentintoDB,
+    updateStudentintoDB,
 };

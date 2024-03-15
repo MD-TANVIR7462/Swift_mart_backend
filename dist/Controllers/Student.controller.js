@@ -44,7 +44,36 @@ const getSingleStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, f
         const result = yield Student_services_1.studenServices.getSingleStudentintoDB(id);
         res.status(200).json({
             success: true,
-            message: "All Student retrive successfully",
+            message: "Single Student retrive successfully",
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+const deleteAstudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const result = yield Student_services_1.studenServices.deleteStudentintoDB(id);
+        res.status(200).json({
+            success: true,
+            message: "A Student Deleted successfully",
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+const updateAstudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const data = req.body;
+        const result = yield Student_services_1.studenServices.updateStudentintoDB(id, data);
+        res.status(200).json({
+            success: true,
+            message: "A Student Updated successfully",
             data: result,
         });
     }
@@ -55,5 +84,7 @@ const getSingleStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, f
 exports.studentControllers = {
     creatStudent,
     getAllStudent,
-    getSingleStudent
+    getSingleStudent,
+    deleteAstudent,
+    updateAstudent
 };
