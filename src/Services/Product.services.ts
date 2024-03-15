@@ -19,7 +19,7 @@ const deleteAProductIntoDB = async (id: string) => {
 };
 const updateAProductIntoDB = async (id: string, data: Partial<TProduct>) => {
   const result = await ProductModel.findByIdAndUpdate(
-     {_id:id },
+    { _id: id },
     { $set: data },
     { new: true }
   );
