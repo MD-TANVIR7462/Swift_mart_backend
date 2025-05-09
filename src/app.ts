@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
-import { StudentRouter } from "./routes/Student.routes";
+import { UserRouter } from "./routes/User.routes";
 import { ProductRouter } from "./routes/Product.routes";
 import { UserRoleRouter } from "./routes/UserRole.routes";
 const app = express();
@@ -12,7 +12,7 @@ app.use(cors());
 
 
 //*Routes.......
-app.use("/api/student",StudentRouter)
+app.use("/api/user",UserRouter)
 app.use("/api/product",ProductRouter)
 app.use("/api/role",UserRoleRouter)
 
@@ -25,9 +25,9 @@ app.use("/api/role",UserRoleRouter)
 
 
 
-//*Hellow Ricoz initial loading..........
+
 app.get("/", (req: Request, res: Response) => {
-  res.json("Hello RicoZ  ! ");
+  res.json("Hello Swift  ! ");
 });
 
 

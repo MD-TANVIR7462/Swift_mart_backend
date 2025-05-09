@@ -1,12 +1,12 @@
-type StudentName= {
+type UserName= {
    firstName: string;
    middleName: string;
    lastName: string;
  }
 
 
-export type TStudent = {
-  name:StudentName;
+export type TUser = {
+  name:UserName;
   gender: string;
   email: string;
   dateofBirth: string;

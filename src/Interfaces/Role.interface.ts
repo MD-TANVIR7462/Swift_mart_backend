@@ -1,4 +1,4 @@
-type Role = "admin" | "instructor" | "user";
+type Role = "admin" | "user";
 
 export type TuserRole = {
   role: Role;

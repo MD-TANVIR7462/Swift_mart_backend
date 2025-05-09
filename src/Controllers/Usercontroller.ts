@@ -1,17 +1,18 @@
 import { NextFunction, Request, Response } from "express";
-import { studenServices } from "../Services/Student.services";
+import { UserServices } from "../Services/User.services";
 
-const creatStudent = async (
+
+const creatUser = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const student = req.body;
-    const result = await studenServices.createStudentIntoDB(student);
+    const User = req.body;
+    const result = await UserServices.createUserIntoDB(User);
     res.status(200).json({
       success: true,
-      message: "Student created successfully",
+      message: "User created successfully",
       data: result,
     });
   } catch (error) {
@@ -19,16 +20,16 @@ const creatStudent = async (
   }
 };
 
-const getAllStudent = async (
+const getAllUser = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const result = await studenServices.getAllStudentIntoDB();
+    const result = await UserServices.getAllUserIntoDB();
     res.status(200).json({
       success: true,
-      message: "All Student retrive successfully",
+      message: "All User retrive successfully",
       data: result,
     });
   } catch (error) {
@@ -36,35 +37,17 @@ const getAllStudent = async (
   }
 };
 
-const getSingleStudent = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const { id } = req.params;
-    const result = await studenServices.getSingleStudentintoDB(id);
-    res.status(200).json({
-      success: true,
-      message: "Single Student retrive successfully",
-      data: result,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-const deleteAstudent = async (
+const getSingleUser = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const { id } = req.params;
-    const result = await studenServices.deleteStudentintoDB(id);
+    const result = await UserServices.getSingleUserintoDB(id);
     res.status(200).json({
       success: true,
-      message: "A Student Deleted successfully",
+      message: "Single User retrive successfully",
       data: result,
     });
   } catch (error) {
@@ -72,7 +55,25 @@ const deleteAstudent = async (
   }
 };
 
-const updateAstudent = async (
+const deleteAUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const result = await UserServices.deleteUserintoDB(id);
+    res.status(200).json({
+      success: true,
+      message: "A User Deleted successfully",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateAUser = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -80,10 +81,10 @@ const updateAstudent = async (
   try {
     const { id } = req.params;
     const data = req.body;
-    const result = await studenServices.updateStudentintoDB(id, data);
+    const result = await UserServices.updateUserintoDB(id, data);
     res.status(200).json({
       success: true,
-      message: "A Student Updated successfully",
+      message: "A User Updated successfully",
       data: result,
     });
   } catch (error) {
@@ -91,11 +92,11 @@ const updateAstudent = async (
   }
 };
 
-export const studentControllers = {
-  creatStudent,
-  getAllStudent,
-  getSingleStudent,
-  deleteAstudent,
-  updateAstudent
+export const UserControllers = {
+  creatUser,
+  getAllUser,
+  getSingleUser,
+  deleteAUser,
+  updateAUser
 
 };

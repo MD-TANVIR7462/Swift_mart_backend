@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
-import { TStudent } from "../Interfaces/Student.interface";
+import { TUser } from "../Interfaces/User.interface";
 
-const studentSchema = new Schema<TStudent>({
+const UserSchema = new Schema<TUser>({
   name: {
     firstName: {
       type: String,
@@ -46,4 +46,4 @@ const studentSchema = new Schema<TStudent>({
 });
 
 
-export const studentModel = model<TStudent>('student', studentSchema);
+export const UserModel = model<TUser>('User', UserSchema);
