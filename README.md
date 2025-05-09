@@ -4,7 +4,7 @@
 
 ## Features
 
-- **RESTful API**: Provides endpoints for CRUD operations on students, products, and user roles.
+- **RESTful API**: Provides endpoints for CRUD operations on Users, products, and user roles.
 - **TypeScript**: Utilizes TypeScript for static typing and enhanced code readability.
 - **MVC Architecture**: Implements the Model-View-Controller architecture pattern for better code organization.
 - **MongoDB**: Stores data using a MongoDB database.
